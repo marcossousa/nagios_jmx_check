@@ -176,18 +176,18 @@ public class JMXQuery {
 					this.verbatim = option.length() - 1;
 				} else if (option.equals("-w")) {
 					this.warning = args[++i];
+					this.warning = parser.parse(warning);
 				} else if (option.equals("-c")) {
 					this.critical = args[++i];
+					this.critical = parser.parse(critical);
 				} else if (option.equals("-e")) {
 					this.expected = args[++i];
+					this.expected = parser.parse(expected);
 				} else if (option.equals("-T")) {
 					this.parser = initParser(args[++i]);
 				}
 			}
 
-			this.critical = parser.parse(critical);
-			this.warning = parser.parse(warning);
-			this.expected = parser.parse(expected);
 
 			if (url == null || object == null || attribute == null)
 				throw new Exception("Required options not specified");
